@@ -1,0 +1,13 @@
+name: SimpleHome
+version: '${project.version}'
+main: com.github.lapis0875.simplesethome.SimpleHome
+api-version: 1.17
+prefix: SimpleHome
+authors: [ Lapis0875 ]
+description: Simple sethome utility.
+website: https://lapis0875.github.io
+commands:
+  waypoint:
+    description: Main command of SimpleHome.
+    usage: /<command>
+
