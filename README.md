@@ -1,9 +1,8 @@
 # SimpleHome
-[kr](readme/KR.md)
+Translated versions:
+- [kr](readme/KR.md)
 
 Simple way to save your waypoint.
-
-기본 명령어 : /waypoint
 
 ## 1. Save waypoint
 You can save only one waypoint.
