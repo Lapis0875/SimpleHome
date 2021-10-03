@@ -1,8 +1,10 @@
 # SimpleHome
+Simple way to save your waypoint.
+
 Translated versions:
 - [kr](readme/KR.md)
 
-Simple way to save your waypoint.
+# Features
 
 ## 1. Save waypoint
 You can save only one waypoint.
