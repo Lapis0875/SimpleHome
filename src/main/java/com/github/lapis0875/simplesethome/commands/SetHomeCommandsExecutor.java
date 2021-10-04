@@ -155,7 +155,7 @@ public class SetHomeCommandsExecutor implements CommandExecutor, TabCompleter {
 
     private boolean onWaypointRemove(@NotNull Player player, @NotNull String type) {
         PersistentDataContainer playerNBT = player.getPersistentDataContainer();
-        Optional<Waypoint> waypoint = Optional.empty();
+        Optional<Waypoint> waypoint;
         switch (type) {
             case Constants.WAYPOINT:
                 waypoint = Optional.ofNullable(playerNBT.get(
@@ -204,38 +204,34 @@ public class SetHomeCommandsExecutor implements CommandExecutor, TabCompleter {
     ) {
         NamespacedKey wayPointKey = new NamespacedKey(SimpleHome.instance(), Constants.WAYPOINT);
         Optional<Waypoint> waypoint = Optional.ofNullable(player.getPersistentDataContainer().get(wayPointKey, new WaypointDataType()));
-        waypoint.ifPresent((Waypoint w) -> {
-            player.sendMessage(
-                Component.text(
-                    String.format(
-                        "집 (%s) : (%s) %f, %f, %f",
-                        w.name,
-                        w.getWorld().getEnvironment().name(),
-                        w.x,
-                        w.y,
-                        w.z
-                    ),
-                    TextColor.color(171, 242, 0)
-                )
-            );
-        });
+        waypoint.ifPresent((Waypoint w) -> player.sendMessage(
+            Component.text(
+                String.format(
+                    "집 (%s) : (%s) %f, %f, %f",
+                    w.name,
+                    w.getWorld().getEnvironment().name(),
+                    w.x,
+                    w.y,
+                    w.z
+                ),
+                TextColor.color(171, 242, 0)
+            )
+        ));
 
         NamespacedKey deathLocationKey = new NamespacedKey(SimpleHome.instance(), Constants.DEATH_LOCATION);
         Optional<Waypoint> deathLocation = Optional.ofNullable(player.getPersistentDataContainer().get(deathLocationKey, new WaypointDataType()));
-        deathLocation.ifPresent((Waypoint w) -> {
-            player.sendMessage(
-                Component.text(
-                    String.format(
-                        "사망 위치 : (%s) %f, %f, %f",
-                        w.getWorld().getEnvironment().name(),
-                        w.x,
-                        w.y,
-                        w.z
-                    ),
-                    TextColor.color(171, 242, 0)
-                )
-            );
-        });
+        deathLocation.ifPresent((Waypoint w) -> player.sendMessage(
+            Component.text(
+                String.format(
+                    "사망 위치 : (%s) %f, %f, %f",
+                    w.getWorld().getEnvironment().name(),
+                    w.x,
+                    w.y,
+                    w.z
+                ),
+                TextColor.color(171, 242, 0)
+            )
+        ));
         return true;
     }
 
@@ -311,6 +307,7 @@ public class SetHomeCommandsExecutor implements CommandExecutor, TabCompleter {
                         tabCompletion.add(Constants.REGISTER_CMD);
                         tabCompletion.add(Constants.SHOW_CMD);
                         tabCompletion.add(Constants.CLEAR_CMD);
+                        tabCompletion.add(Constants.TELEPORT_CMD);
                         return tabCompletion;
                     case 2:
                         switch (args[0]) {
