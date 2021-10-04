@@ -6,7 +6,7 @@
 
     <groupId>com.github.lapis0875</groupId>
     <artifactId>simpletsethome</artifactId>
-    <version>1.5.1</version>
+    <version>1.5.2</version>
     <packaging>jar</packaging>
 
     <name>SimpleHome</name>
