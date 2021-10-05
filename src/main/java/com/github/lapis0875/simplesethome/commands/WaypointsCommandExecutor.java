@@ -21,7 +21,7 @@ import java.util.ArrayList;
 import java.util.List;
 import java.util.Optional;
 
-public class SetHomeCommandsExecutor implements CommandExecutor, TabCompleter {
+public class WaypointsCommandExecutor implements CommandExecutor, TabCompleter {
     @Override
     public boolean onCommand(
             @NotNull CommandSender sender,
@@ -31,11 +31,11 @@ public class SetHomeCommandsExecutor implements CommandExecutor, TabCompleter {
     ) {
         if (sender instanceof Player) {
             Player player = (Player) sender;
-            if (!command.getName().equals(Constants.WAYPOINT_CMD)){
+            if (!command.getName().equals(Constants.CMD_WAYPOINT)){
                 return true;
             }
             switch (args[0]) {
-                case Constants.DEATH_LOCATION_CMD:
+                case Constants.CMD_DEATH_LOCATION:
                 case "deathpoint":
                 case "dl":
                 case "dp":
@@ -49,7 +49,7 @@ public class SetHomeCommandsExecutor implements CommandExecutor, TabCompleter {
                         return true;
                     }
                     return this.onDeathLocationCommand(player, args[1]);
-                case Constants.REGISTER_CMD:
+                case Constants.CMD_REGISTER:
                 case "set":
                     // Death Location Command.
                     if (args.length != 1){
@@ -60,7 +60,7 @@ public class SetHomeCommandsExecutor implements CommandExecutor, TabCompleter {
                         return true;
                     }
                     return this.onWaypointRegister(player);
-                case Constants.TELEPORT_CMD:
+                case Constants.CMD_TELEPORT:
                 case "move":
                 case "go":
                 case "tp":
@@ -74,7 +74,7 @@ public class SetHomeCommandsExecutor implements CommandExecutor, TabCompleter {
                     }
                     return this.onWaypointTeleport(player);
                 case "list":
-                case Constants.SHOW_CMD:
+                case Constants.CMD_SHOW:
                     // Death Location Command.
                     if (args.length != 1){
                         player.sendMessage(Component.text(
@@ -84,7 +84,7 @@ public class SetHomeCommandsExecutor implements CommandExecutor, TabCompleter {
                         return true;
                     }
                     return this.onWaypointShow(player);
-                case Constants.CLEAR_CMD:
+                case Constants.CMD_CLEAR:
                     // Death Location Command.
                     if (args.length != 2){
                         player.sendMessage(Component.text(
@@ -252,14 +252,14 @@ public class SetHomeCommandsExecutor implements CommandExecutor, TabCompleter {
         }
 
         switch (subcommand) {
-            case Constants.TELEPORT_CMD:
+            case Constants.CMD_TELEPORT:
             case "tp":
             case "move":
             case "go":
                 // Teleport player to death location
                 return this.teleportToDeathLocation(player, deathLocation.get());
             case "list":
-            case Constants.SHOW_CMD:
+            case Constants.CMD_SHOW:
                 // Show information of death location
                 return this.showDeathLocation(player, deathLocation.get());
             default:
@@ -299,23 +299,23 @@ public class SetHomeCommandsExecutor implements CommandExecutor, TabCompleter {
     @Override
     public @Nullable List<String> onTabComplete(@NotNull CommandSender sender, @NotNull Command command, @NotNull String alias, @NotNull String[] args) {
         List<String> tabCompletion = new ArrayList<>();
-        if (command.getName().equals(Constants.WAYPOINT_CMD)) {
+        if (command.getName().equals(Constants.CMD_WAYPOINT)) {
             if (sender instanceof Player) {
                 switch (args.length) {
                     case 1:
-                        tabCompletion.add(Constants.DEATH_LOCATION_CMD);
-                        tabCompletion.add(Constants.REGISTER_CMD);
-                        tabCompletion.add(Constants.SHOW_CMD);
-                        tabCompletion.add(Constants.CLEAR_CMD);
-                        tabCompletion.add(Constants.TELEPORT_CMD);
+                        tabCompletion.add(Constants.CMD_DEATH_LOCATION);
+                        tabCompletion.add(Constants.CMD_REGISTER);
+                        tabCompletion.add(Constants.CMD_SHOW);
+                        tabCompletion.add(Constants.CMD_CLEAR);
+                        tabCompletion.add(Constants.CMD_TELEPORT);
                         return tabCompletion;
                     case 2:
                         switch (args[0]) {
-                            case Constants.DEATH_LOCATION_CMD:
-                                tabCompletion.add(Constants.TELEPORT_CMD);
-                                tabCompletion.add(Constants.SHOW_CMD);
+                            case Constants.CMD_DEATH_LOCATION:
+                                tabCompletion.add(Constants.CMD_TELEPORT);
+                                tabCompletion.add(Constants.CMD_SHOW);
                                 break;
-                            case Constants.CLEAR_CMD:
+                            case Constants.CMD_CLEAR:
                                 tabCompletion.add(Constants.WAYPOINT);
                                 tabCompletion.add(Constants.DEATH_LOCATION);
                                 break;

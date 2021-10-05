@@ -10,4 +10,13 @@ commands:
   waypoint:
     description: Main command of SimpleHome.
     usage: /<command>
+  sethome:
+    description: Set player's current position as home.
+    usage: /<command>
+  home:
+    description: Teleport to player's home.
+    usage: /<command>
+  back:
+    description: Teleport to player's last death location.
+    usage: /<command>
 
