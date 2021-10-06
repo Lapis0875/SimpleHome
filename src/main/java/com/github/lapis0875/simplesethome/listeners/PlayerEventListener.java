@@ -39,8 +39,8 @@ public class PlayerEventListener implements Listener {
     public void onPlayerJoin(PlayerJoinEvent e) {
         Player player = e.getPlayer();
         player.sendMessage(Component.text(
-                "이 서버는 SimpleHome 플러그인을 사용중입니다. /waypoint 로 편리한 셋홈과 사망 위치로의 귀환을 사용해보세요!",
-                TextColor.color(171, 242, 0)
+            "이 서버는 SimpleHome 플러그인을 사용중입니다. /waypoint 로 편리한 셋홈과 사망 위치로의 귀환을 사용해보세요!",
+            TextColor.color(171, 242, 0)
         ));
     }
 }
