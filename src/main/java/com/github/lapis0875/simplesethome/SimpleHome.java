@@ -20,12 +20,12 @@ public final class SimpleHome extends JavaPlugin {
         getCommand(Constants.CMD_HOME).setExecutor(aliasExecutor);
         getCommand(Constants.CMD_BACK).setExecutor(aliasExecutor);
         getServer().getPluginManager().registerEvents(new PlayerEventListener(), this);
-        getSLF4JLogger().info("Loaded.");
+        getLogger().info("Loaded.");
     }
 
     @Override
     public void onDisable() {
         // Plugin shutdown logic
-        getSLF4JLogger().info("Unloaded.");
+        getLogger().info("Unloaded.");
     }
 }
