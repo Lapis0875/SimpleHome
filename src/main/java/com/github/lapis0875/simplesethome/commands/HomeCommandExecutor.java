@@ -13,7 +13,6 @@ import org.bukkit.command.CommandExecutor;
 import org.bukkit.command.CommandSender;
 import org.bukkit.command.TabCompleter;
 import org.bukkit.entity.Player;
-import org.bukkit.persistence.PersistentDataContainer;
 import org.jetbrains.annotations.NotNull;
 import org.jetbrains.annotations.Nullable;
 
@@ -31,9 +30,6 @@ public class HomeCommandExecutor implements CommandExecutor, TabCompleter {
     ) {
         if (sender instanceof Player) {
             Player player = (Player) sender;
-            if (!command.getName().equals(Constants.CMD_WAYPOINT)){
-                return true;
-            }
             switch (command.getName()) {
                 case Constants.CMD_SETHOME:
                     // sethome
