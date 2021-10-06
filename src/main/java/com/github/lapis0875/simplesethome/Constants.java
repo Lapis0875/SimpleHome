@@ -1,5 +1,7 @@
 package com.github.lapis0875.simplesethome;
 
+import net.kyori.adventure.text.format.TextColor;
+
 public class Constants {
     // Plugin Info
     public static final String PLUGIN_NAME = "SimpleHome";
@@ -16,4 +18,7 @@ public class Constants {
     // NBT Tag Keys
     public static final String DEATH_LOCATION = "deathlocation";
     public static final String WAYPOINT = "waypoint";
+    // Colors
+    public static final TextColor INFO = TextColor.color(171, 242, 0);
+    public static final TextColor ERROR = TextColor.color(200, 0, 0);
 }
